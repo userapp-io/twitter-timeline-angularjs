@@ -22,13 +22,12 @@ angular.module('twitter.timeline', [])
 					.addClass('twitter-timeline');
 
 				function render() {
+					var body = $('.twitter-timeline').contents().find('body');
+
 					if (scope.cssUrl) {
-						var head = $('.twitter-timeline').contents().find('head');
-						head.append($('<link/>', { rel: 'stylesheet', href: scope.cssUrl, type: 'text/css' }));
+						body.append($('<link/>', { rel: 'stylesheet', href: scope.cssUrl, type: 'text/css' }));
 					}
 
-					var body = $('.twitter-timeline').contents().find('body');
-					
 					function setHeight() {
 						if (body.find('.stream').length == 0) {
 							setTimeout(setHeight, 100);
