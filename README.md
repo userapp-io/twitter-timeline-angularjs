@@ -1,6 +1,9 @@
 # Twitter Timeline Directive
 An AngularJS directive of Twitter's Embedded Timeline with support for custom CSS.
 
+## Demo
+[CSS Customized Twitter Timeline](http://userapp-io.github.io/twitter-timeline-angularjs/demo/demo.html)
+
 ## Requirements
 
 * AngularJS
