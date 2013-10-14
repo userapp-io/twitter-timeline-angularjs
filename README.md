@@ -1,5 +1,8 @@
 # Twitter Timeline Directive
-An AngularJS directive of Twitter's Embedded Timeline with support for custom CSS.
+An AngularJS directive of Twitter's Embedded Timeline with support for custom CSS. Used at the [UserApp](https://www.userapp.io/) Dashboard.
+
+## Demo
+[CSS Customized Twitter Timeline](http://userapp-io.github.io/twitter-timeline-angularjs/demo/demo.html)
 
 ## Requirements
 
@@ -29,4 +32,4 @@ If true, the div will resize to the same height as the iframe's content (the tim
 The url to the CSS file that you want to apply on the timeline.
 
 * ``data-tweet-limit``
-Max number of tweets to show. For more information on custom attributes, check out the documentation on embedded Twitter timelines: [https://dev.twitter.com/docs/embedded-timelines](https://dev.twitter.com/docs/embedded-timelines).
+Max number of tweets to show. For more information on custom attributes, check out the documentation for Embedded Twitter Timelines: [https://dev.twitter.com/docs/embedded-timelines](https://dev.twitter.com/docs/embedded-timelines).
