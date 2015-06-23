@@ -17,9 +17,12 @@ angular.module('twitter.timeline', [])
 				element
 					.attr('id', 'twitter-feed')
 					.attr("width", "100%" || attrs.width)
-					.attr('data-chrome', 'noheader transparent')
 					.attr('data-widget-id', attrs.twitterTimeline)
 					.addClass('twitter-timeline');
+				
+				if (attrs.cssUrl) {
+					element.attr('data-chrome', 'noheader transparent');
+				}
 
 				function render() {
 					var body = $('.twitter-timeline').contents().find('body');
