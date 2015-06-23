@@ -9,7 +9,8 @@ angular.module('twitter.timeline', [])
 			restrict: 'A',
 			scope: {
 				cssUrl: "@",
-				autoResize: "="
+				autoResize: "=",
+				twitterScreenName: "@"
 			},
 			link: function (scope, element, attrs) {
 				$('body').removeAttr('data-twttr-rendered');
@@ -42,11 +43,26 @@ angular.module('twitter.timeline', [])
 					}
 				}
 
+
+                		var scriptUrl = (/^http:/.test(document.location) ? 'http' : 'https') + '://platform.twitter.com/widgets.js';
+                		
 				if (!$('#twitter-wjs').length) {
-					$.getScript((/^http:/.test(document.location)?'http':'https') + '://platform.twitter.com/widgets.js', function() {
-						render();
-						$('.twitter-timeline').load(render);
-	        		});
+					if (attrs.twitterScreenName !== "") {
+						$.getScript(scriptUrl, function() {
+							render();
+							$('.twitter-timeline').load(render);
+						});
+					} else {
+						scope.$watch('twitterScreenName', function (newValue) {
+							if (newValue.length > 0) {
+								element.attr('data-screen-name', newValue);
+								$.getScript(scriptUrl, function () {
+									render();
+									$('.twitter-timeline').load(render);
+								});
+							}
+						});
+					}
 				}
 			}
 		};
