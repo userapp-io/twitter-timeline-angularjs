@@ -20,7 +20,7 @@ angular.module('twitter.timeline', [])
 					.attr('data-widget-id', attrs.twitterTimeline)
 					.addClass('twitter-timeline');
 				
-				if (attrs.cssUrl !== null) {
+				if (attrs.cssUrl) {
 					element.attr('data-chrome', 'noheader transparent');
 				}
 
