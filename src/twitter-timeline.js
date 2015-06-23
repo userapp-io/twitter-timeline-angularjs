@@ -44,22 +44,22 @@ angular.module('twitter.timeline', [])
 				}
 
 
-                		var scriptUrl = (/^http:/.test(document.location) ? 'http' : 'https') + '://platform.twitter.com/widgets.js';
+                		function handleScript() {
+                			var scriptUrl = (/^http:/.test(document.location) ? 'http' : 'https') + '://platform.twitter.com/widgets.js';
+                			$.getScript(scriptUrl, function () {
+						render();
+						$('.twitter-timeline').load(render);
+					});
+                		}
                 		
 				if (!$('#twitter-wjs').length) {
 					if (attrs.twitterScreenName !== "") {
-						$.getScript(scriptUrl, function() {
-							render();
-							$('.twitter-timeline').load(render);
-						});
+						handleScript();
 					} else {
 						scope.$watch('twitterScreenName', function (newValue) {
 							if (newValue.length > 0) {
 								element.attr('data-screen-name', newValue);
-								$.getScript(scriptUrl, function () {
-									render();
-									$('.twitter-timeline').load(render);
-								});
+								handleScript();
 							}
 						});
 					}
